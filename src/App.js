@@ -43,7 +43,34 @@ class App extends Component {
     this.mountPointRef.current.appendChild( this.renderer.domElement );
   };
 
-  addCustomSceneOnjects = () => {};
+  // adding any custom Three.js objects into a scene
+  // based on source: https://threejs.org/docs/#api/en/geometries/BoxGeometry
+  addCustomSceneOnjects = () => {
+    const geometry = new THREE.BoxGeometry( 2, 2, 2); // new box with, width, height depth args
+    const material = new THREE.MeshPhongMaterial({
+      color: 0x156289, // Hexadecimal color value of the geometry (0x156289), blueish
+      emissive: 0x072534, // (light) colour or the material
+      side: THREE.DoubleSide, // which of the face sides will be rendered - front, back or both. Default is THREE.FrontSide. Other options are THREE.BackSide and THREE.DoubleSide.
+      flatShading: true // rendered with flat shading
+    })
+    this.cube = new THREE.Mesh( geometry, material );
+    this.scene.add( this.cube );
+
+    const lights = []; // light storage
+    // A light that gets emitted from a single point in all directions. A common use case for this is to replicate the light emitted from a bare lightbulb. 
+    // Args:(color, distance, decay) 
+    lights[ 0 ] = new THREE.PointLight( 0xffffff, 1, 0 );
+    lights[ 1 ] = new THREE.PointLight( 0xffffff, 1, 0 );
+    lights[ 2 ] = new THREE.PointLight( 0xffffff, 1, 0 );
+    // set the position of each light, determines direction, 
+    lights[ 0 ].position.set( 0, 200, 0 );
+    lights[ 1 ].position.set( 100, 200, 100 );
+    lights[ 2 ].position.set( - 100, - 200, - 100 );
+    // Add the lights to the scene
+    this.scene.add( lights[ 0 ] );
+    this.scene.add( lights[ 1 ] );
+    this.scene.add( lights[ 2 ] );
+  };
 
   startAnimationLoop = () => {};
 
