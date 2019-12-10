@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Tutorial source [here](https://codeburst.io/react-16-three-js-integration-tips-2019-b6afe19c0b83) [and here](https://github.com/supromikali/react-three-demo)
+
 ## Available Scripts
 
 In the project directory, you can run:

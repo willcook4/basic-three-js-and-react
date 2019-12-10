@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
+import * as THREE from 'three';
 
 class App extends Component {
+  componentDidMount() {
+    this.sceneSetup();
+  }
+
+  sceneSetup = () => {};
+
   render() {
     return (
       <div>
