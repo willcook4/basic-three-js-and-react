@@ -6,6 +6,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Tutorial source [here](https://codeburst.io/react-16-three-js-integration-tips-2019-b6afe19c0b83) [and here](https://github.com/supromikali/react-three-demo)
 
+![Screenshot](./screenshot.png)
+
+## Live deme [here](https://5df04773564fbd95d0983808--keen-yonath-0ba3af.netlify.com/)
 
 ## Todos
 - Cleanup Global styles, e.g. default margin
