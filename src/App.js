@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './App.css';
 import * as THREE from 'three';
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import styled from 'styled-components';
@@ -6,6 +7,12 @@ import styled from 'styled-components';
 const AnimationWrapper = styled.div`
   /* scene size is controlled by setting container dimensions */
   height: 300px;
+`
+
+const StyledText = styled.p`
+  text-align: center;
+  font-weight: bold;
+  font-family: sans-serif;
 `
 
 class App extends Component {
@@ -51,10 +58,10 @@ class App extends Component {
     this.scene = new THREE.Scene();
     // Setup a camera
     this.camera = new THREE.PerspectiveCamera(
-      75, // fov = field of view
+      75, // fov (field of view)
       width / height, // aspect ratio
       0.1, // near clipping plane (anything closer than this wont be rendered)
-      1000 // far plane (anything further away than this wont be rendered)
+      1000 // far clipping plane (anything further away than this wont be rendered)
     );
     // set a distance from the cube( cube is located at z = 0)
     this.camera.position.z = 5;
@@ -126,7 +133,11 @@ class App extends Component {
 
   render() {
     return (
-      <AnimationWrapper ref={this.mountPointRef} />
+      <>
+        <StyledText>React + Three.js Experiment</StyledText>
+        <AnimationWrapper ref={this.mountPointRef} />
+        <StyledText>Scroll to zoom, drag to rotate</StyledText>
+      </>
     );
   }
 }

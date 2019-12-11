@@ -1,0 +1,8 @@
+/* 
+  ***** Use styled components for styling ******
+
+  The import below is used to normalise the browser
+  This project setup uses PostCSS Normalize for adding a CSS Reset.
+*/
+
+@import-normalize; /* bring in normalize.css styles */
