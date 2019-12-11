@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import * as THREE from 'three';
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import styled from 'styled-components';
 
 const AnimationWrapper = styled.div`
   /* scene size is controlled by setting container dimensions */
-  height: 250px;
+  height: 300px;
 `
 
 class App extends Component {
@@ -35,6 +36,11 @@ class App extends Component {
     );
     // set a distance from the cube( cube is located at z = 0)
     this.camera.position.z = 5;
+
+    // Interactivity
+    this.controls = new OrbitControls( this.camera, this.mountPointRef.current );
+    // Uncomment the enableZoom if the scene is only a part of the screen, otherwise scrolling a page would also cause zooming of the scene.
+    // this.controls.enableZoom = false;
 
     this.renderer = new THREE.WebGLRenderer(); // instantiate the WebGL renderer
     this.renderer.setSize( width, height); // set the size of the renderer
