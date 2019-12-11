@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const AnimationWrapper = styled.div`
   /* scene size is controlled by setting container dimensions */
-  width: 250px;
+  height: 250px;
 `
 
 class App extends Component {
@@ -72,7 +72,29 @@ class App extends Component {
     this.scene.add( lights[ 2 ] );
   };
 
-  startAnimationLoop = () => {};
+  /**
+   * This will create a loop that causes the renderer to draw the scene 
+   * every time the screen is refreshed (on a typical screen this means 60 times per second).
+   * 
+   * requestAnimationFrame has a number of advantages over setInterval.
+   * Including pausing when the user navigates to another browser tab. 
+   * 
+   * refresh rate of the screen should not be confused with frames per second (FPS): 
+   * having FPS equal screen refresh rate is desirable
+   * */ 
+  startAnimationLoop = () => {
+    // Animate the rotation on the X axis
+    this.cube.rotation.x += 0.01;
+    // Animate the rotation on the Y axis
+    this.cube.rotation.y += 0.01;
+
+    this.renderer.render( this.scene, this.camera );
+
+    // The window.requestAnimationFrame() method tells the browser that you wish to perform
+    // an animation and requests that the browser call a specified function
+    // to update an animation before the next repaint
+    this.requestID = window.requestAnimationFrame(this.startAnimationLoop);
+  };
 
   render() {
     return (
