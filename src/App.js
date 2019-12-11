@@ -18,7 +18,29 @@ class App extends Component {
     this.sceneSetup();
     this.addCustomSceneOnjects();
     this.startAnimationLoop();
+
+    // Listen for window resize changes
+    window.addEventListener('resize', this.handleWindowResize);
   }
+
+  componentWillUnmount() {
+    // Stop listening for window resize changes
+    window.removeEventListener('resize', this.handleWindowResize);
+
+    window.cancelAnimationFrame(this.requestID);
+    // remove interactivity 
+    this.controls.dispose();
+}
+
+  handleWindowResize = () => {
+    const width = this.mountPointRef.current.clientWidth;
+    const height = this.mountPointRef.current.clientHeight;
+
+    this.renderer.setSize( width, height );
+    // update the camera to match the proportions of the viewport
+    this.camera.aspect = width / height;
+    this.camera.updateProjectionMatrix();
+  };
 
   // Setup the scene, camera and renderer
   sceneSetup = () => {
@@ -37,7 +59,7 @@ class App extends Component {
     // set a distance from the cube( cube is located at z = 0)
     this.camera.position.z = 5;
 
-    // Interactivity
+    // Interactivity, Orbit controls allow the camera to orbit around a target
     this.controls = new OrbitControls( this.camera, this.mountPointRef.current );
     // Uncomment the enableZoom if the scene is only a part of the screen, otherwise scrolling a page would also cause zooming of the scene.
     // this.controls.enableZoom = false;
