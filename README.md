@@ -8,7 +8,7 @@ Tutorial source [here](https://codeburst.io/react-16-three-js-integration-tips-2
 
 ![Screenshot](./screenshot.png)
 
-## Live deme [here](https://5df04773564fbd95d0983808--keen-yonath-0ba3af.netlify.com/)
+## Live deme [here](https://keen-yonath-0ba3af.netlify.com/)
 
 ## Todos
 - Cleanup Global styles, e.g. default margin
